@@ -1,0 +1,106 @@
+.add-product {
+  width: 100%;
+  max-width: 750px;
+  margin: 25px auto;
+  padding: 25px 30px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Input field wrapper */
+.addproduct-itemfield {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+.addproduct-itemfield label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 6px;
+}
+
+.addproduct-itemfield input {
+  height: 45px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0 12px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.addproduct-itemfield input:focus {
+  border: 1px solid #6079ff;
+}
+
+/* Price fields */
+.addproduct-price {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Dropdown */
+.add-product-selector {
+  height: 45px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0 10px;
+  font-size: 14px;
+  color: #444;
+  background: #fafafa;
+  outline: none;
+}
+
+.add-product-selector:focus {
+  border: 1px solid #6079ff;
+}
+
+/* Thumbnail */
+.addproduct-thumnail-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+  margin: 12px 0;
+}
+
+/* Button */
+.addproduct-btn {
+  margin-top: 15px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  background: #6079ff;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.addproduct-btn:hover {
+  background: #4a63e0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .add-product {
+    padding: 20px;
+    margin: 15px;
+  }
+
+  .addproduct-price {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .addproduct-btn {
+    width: 100%;
+  }
+}

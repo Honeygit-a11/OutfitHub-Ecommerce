@@ -1,0 +1,250 @@
+/* Container */
+.shipping-container {
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 90%;
+  max-width: 1200px;
+  margin: 30px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  gap: 30px;
+}
+
+/* Left side (Add Address Section) */
+.shipping-left {
+  flex: 1;
+}
+
+.shipping-heading {
+  font-size: 22px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+.add-address {
+  border: 2px dashed #f07828;
+  padding: 18px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 550px;
+  text-align: center;
+  color: #555;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 8px;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+.add-address:hover {
+  background: #fdf3ec;
+  border-color: #f07828;
+  color: #f07828;
+}
+
+/* Right side (Saved Address Section) */
+.shipping-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Address form (modal style) */
+.address-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 25px;
+  width: 500px;
+  max-width: 95%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+.address-form input,
+.address-form textarea {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.address-form input:focus,
+.address-form textarea:focus {
+  border-color: #39a4e2;
+}
+
+.address-form button {
+  padding: 12px;
+  background-color: #39a4e2;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.address-form button:hover {
+  background-color: #2d8ac0;
+}
+
+/* Saved addresses (right side cards) */
+.saved-addresses {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+ .address-card {
+    border: 1px solid #eee;
+    padding: 20px;
+    margin-left: 50%;
+    margin-top: -35%;
+    margin-left: 60%;
+    margin-bottom: 100px;
+    border-radius: 12px;
+    background: #fafafa;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+    width: auto;
+}
+
+.address-card h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: #333;
+}
+
+.address-card p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.deliver-btn {
+  margin-top: 12px;
+  padding: 10px 16px;
+  background: #e78441;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.deliver-btn:hover {
+  background: #d46a28;
+}
+
+
+.address-form::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+.payment-info {
+  margin-top: 20px;
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+}
+
+.payment-info h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.payment-btn {
+  background: #28a745;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.payment-btn:hover {
+  background: #218838;
+}
+
+.delivery-method-section {
+  /* margin: 25px; */
+  margin-right: 50%;
+  margin-top: 5%;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
+.delivery-method-section h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  color: #222;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 8px;
+}
+
+
+.delivery-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+
+.delivery-options label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #444;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fafafa;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.delivery-options label:hover {
+  background: #f5f5f5;
+  border-color: #999;
+}
+
+
+.delivery-options input[type="radio"] {
+  accent-color: #28a745; /* green like Amazon */
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+
+.delivery-options input[type="radio"]:checked + span {
+  font-weight: 600;
+  color: #28a745;
+}

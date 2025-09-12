@@ -1,0 +1,137 @@
+/* 🔹 ShopCategory.css – Professional & Responsive */
+
+/* Page Wrapper */
+.shop-category {
+  width: 100%;
+  max-width: 1280px; /* keeps layout centered on large screens */
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* 🔹 Banner */
+.shopcategory-banner {
+  width: 100%;
+  height: auto;
+  max-height: 350px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* 🔹 Index & Sort Bar */
+.shopcategory-indexSort {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 10px 15px;
+  border-radius: 12px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.shopcategory-indexSort p {
+  font-size: 15px;
+  color: #374151;
+}
+
+.shopcategory-indexSort p span {
+  font-weight: 600;
+  color: #111827;
+}
+
+/* 🔹 Sort Dropdown */
+.shopcategory-sort {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.shopcategory-sort img {
+  width: 14px;
+  height: 14px;
+}
+
+.shopcategory-sort:hover {
+  background: #ff6b3d;
+  color: #fff;
+  border-color: #ff6b3d;
+}
+
+/* 🔹 Product Grid */
+.shopcategory-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 0.5fr));
+  gap: 30px;
+  margin-top: 15px;
+  
+   
+}
+
+/* 🔹 Load More Button */
+.shopsategory-loadmore {
+  margin: 30px auto 0;
+  padding: 12px 28px;
+  background: #33a0d7;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.shopsategory-loadmore:hover {
+  background: #e0562c;
+}
+
+/* 🔹 Responsive */
+@media (max-width: 1024px) {
+  .shop-category {
+    padding: 15px;
+    gap: 25px;
+  }
+  .shopcategory-banner {
+    max-height: 280px;
+  }
+  .shopcategory-products {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .shop-category {
+    padding: 12px;
+    gap: 20px;
+  }
+  .shopcategory-banner {
+    max-height: 220px;
+    border-radius: 12px;
+  }
+  .shopcategory-indexSort {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .shopcategory-products {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px;
+  }
+  .shopsategory-loadmore {
+    padding: 10px 22px;
+    font-size: 14px;
+  }
+}
