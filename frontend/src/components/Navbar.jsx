@@ -3,6 +3,7 @@ import '../Style/Navbar.css'
 import { Link } from 'react-router-dom'
 import cart_icon from '../components/Assets/cart_icon.png'
 import { ShopContext } from '../context/ShopContext'
+import logo from '../components/Assets/logo.png'
 // import { FaHome } from "react-icons/fa";
  const Navbar = () => {
   const [menu,setMenu] = useState('shop');
@@ -17,8 +18,7 @@ import { ShopContext } from '../context/ShopContext'
 
     <header className='navbar'>
       <div className='logo'>
-        <img src='logosmart.png' alt='StyleShop Logo' className='logoe'/>
-        <span>Outfit<h4>Hub</h4></span>
+        <img src={logo} alt='StyleShop Logo' className='logoe'/>
       </div>
     <ul className='nav-menu'>
       <li onClick={()=>{setMenu('shop')}}><Link style={{textDecoration:'none', color:"black"}} to='/'>Shop</Link> {menu === 'shop'? <hr/>:<></>}</li>

@@ -28,9 +28,11 @@ exports.updateOrder = async (req,res) =>{
   try{
     const updated = await Order.findByIdAndUpdate(
       req.params.id,
-      {status:req.body.status},
-      {new:true}
+      { status: req.body.status },
+      { new: true }
     );
+    if (!updated) return res.status(404).json({ message: "Order not found" });
+
     res.json(updated);
   }catch(err){
       res.status(500).json({error:err.message});

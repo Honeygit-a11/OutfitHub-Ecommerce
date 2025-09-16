@@ -1,4 +1,6 @@
 import React, { useContext } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/Authcontext';
 import '../Style/ProductDisplay.css'
 import star_icon from '../components/Assets/star_icon.png';
 import star_dull_icon from '../components/Assets/star_dull_icon.png';
@@ -6,8 +8,18 @@ import { ShopContext } from '../context/ShopContext';
 import ProductZoom from './Productzoom';
 
 const ProductDisplay = (props) => {
-    const {product} = props;
-    const {addToCart}= useContext(ShopContext);
+    const { product } = props;
+    const { addToCart } = useContext(ShopContext);
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleAddToCart = () => {
+      if (!user) {
+        navigate('/Login');
+      } else {
+        addToCart(product.id);
+      }
+    };
   return (
     <div className='productdisplay'>
         <div className="productdisplay-left">
@@ -48,7 +60,7 @@ const ProductDisplay = (props) => {
                 <div>XXL</div>
             </div>
           </div>
-          <button onClick={()=>{addToCart(product.id)}}>Add to Cart</button>
+          <button onClick={handleAddToCart}>Add to Cart</button>
           <p className='productdisplay-right-category'><span>Category :</span>Women, T-Shirt,Crop Top</p>
           <p className='productdisplay-right-category'><span>Tags :</span>Modern,Latest</p>
 

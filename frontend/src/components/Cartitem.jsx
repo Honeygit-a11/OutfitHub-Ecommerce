@@ -1,20 +1,36 @@
 
 import React, { useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/Authcontext';
 import '../Style/Cartitem.css';
 import remove_icon from '../components/Assets/cart_cross_icon.png'
 import { ShopContext } from '../context/ShopContext';
 import Billing from '../components/Billing/Billing';
 const CartItems = () => {
-  const { all_product, cartItems, removeFromCart,applyCoupon,discount } = useContext(ShopContext);
+  const { all_product, cartItems, removeFromCart, applyCoupon, discount } = useContext(ShopContext);
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  const [couponCode, setCouponCode] =useState('');
-  const [message,setMessage] = useState('');
+  const [couponCode, setCouponCode] = useState('');
+  const [message, setMessage] = useState('');
 
-  const handleApplyCoupon =()=>{
-    const success  = applyCoupon(couponCode);
-    if(success){
+  const handleRemoveFromCart = (id) => {
+    if (!user) {
+      navigate('/Login');
+    } else {
+      removeFromCart(id);
+    }
+  };
+
+  const handleApplyCoupon = () => {
+    if (!user) {
+      navigate('/Login');
+      return;
+    }
+    const success = applyCoupon(couponCode);
+    if (success) {
       setMessage(`Coupon Applied!`)
-    }else{
+    } else {
       setMessage(`Invalid coupon code`);
     }
   };
@@ -41,7 +57,7 @@ const CartItems = () => {
                   <p>₹{e.new_price}</p>
                   <button className="cartitems-quantity">{cartItems[e.id]}</button>
                   <p>₹{e.new_price * cartItems[e.id]}</p>
-                  <img src={remove_icon} onClick={() => { removeFromCart(e.id) }} />
+                  <img src={remove_icon} onClick={() => { handleRemoveFromCart(e.id) }} />
                 </div>
                 <hr />
               </div>

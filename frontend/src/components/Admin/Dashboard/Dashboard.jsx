@@ -1,48 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
 } from "recharts";
 import "../../../components/Admin/Dashboard/Dashboard.css";
 
-const salesData = [
-  
-];
-
 const Dashboard = () => {
+  const [stats, setStats] = useState({});
+  const [salesData, setSalesData] = useState([]);
+  const [recentOrders, setRecentOrders] = useState([]);
+
+  useEffect(() => {
+    const fetchDashboard = async () => {
+      try {
+        const { data } = await axios.get("http://localhost:7000/api/dashboard");
+        setStats(data);
+        setSalesData(data.salesChart);
+        setRecentOrders(data.recentOrders);
+      } catch (err) {
+        console.error("Dashboard Fetch Error:", err);
+      }
+    };
+    fetchDashboard();
+  }, []);
+
   return (
     <div className="dashboard-container">
       <div className="dashboard-main">
-
-        {/* Stats Cards */}
+        {/* Stats */}
         <section className="dashboard-cards">
           <div className="dashboard-card">
             <p className="card-title">Total Sales</p>
-            <h2 className="card-value"></h2>
-            <span className="card-change positive"></span>
+            <h2 className="card-value">${stats.totalSales}</h2>
           </div>
           <div className="dashboard-card">
             <p className="card-title">Orders</p>
-            <h2 className="card-value"></h2>
-            <span className="card-change positive"></span>
+            <h2 className="card-value">{stats.totalOrders}</h2>
           </div>
           <div className="dashboard-card">
             <p className="card-title">Customers</p>
-            <h2 className="card-value"></h2>
-            <span className="card-change positive"></span>
+            <h2 className="card-value">{stats.totalCustomers}</h2>
           </div>
           <div className="dashboard-card">
             <p className="card-title">Revenue Growth</p>
-            <h2 className="card-value"></h2>
-            <span className="card-change positive"></span>
+            <h2 className="card-value">{stats.revenueGrowth}%</h2>
           </div>
         </section>
 
+        {/* Chart */}
         <section className="dashboard-charts">
           <div className="chart-box">
             <h3 className="chart-title">Monthly Sales</h3>
@@ -52,27 +57,13 @@ const Dashboard = () => {
                 <XAxis dataKey="month" />
                 <YAxis />
                 <Tooltip />
-                <Line
-                  type="monotone"
-                  dataKey="sales"
-                  stroke="#4e73df"
-                  strokeWidth={3}
-                />
+                <Line type="monotone" dataKey="sales" stroke="#4e73df" strokeWidth={3} />
               </LineChart>
             </ResponsiveContainer>
           </div>
-          {/* <div className="chart-box">
-            <h3 className="chart-title">Top Selling Products</h3>
-            <ul className="product-list">
-              <li>Product A - 500</li>
-              <li>Product B - 900</li>
-              <li>Product C - 700</li>
-              <li>Product D - 300</li>
-              <li>Product E - 200</li>
-            </ul>
-          </div> */}
         </section>
 
+        {/* Recent Orders */}
         <section className="dashboard-orders">
           <h3 className="orders-title">Recent Orders</h3>
           <table className="orders-table">
@@ -86,27 +77,15 @@ const Dashboard = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>#12345</td>
-                <td>Emily Carter</td>
-                <td>2023-08-15</td>
-                <td><span className="order-status shipped">Shipped</span></td>
-                <td>$150.00</td>
-              </tr>
-              <tr>
-                <td>#12346</td>
-                <td>David Lee</td>
-                <td>2023-08-14</td>
-                <td><span className="order-status processing">Processing</span></td>
-                <td>$200.00</td>
-              </tr>
-              <tr>
-                <td>#12347</td>
-                <td>Sophia Clark</td>
-                <td>2023-08-13</td>
-                <td><span className="order-status delivered">Delivered</span></td>
-                <td>$100.00</td>
-              </tr>
+              {recentOrders.map((order) => (
+                <tr key={order._id}>
+                  <td>{order._id}</td>
+                  <td>{order.userName}</td>
+                  <td>{new Date(order.createdAt).toLocaleDateString()}</td>
+                  <td><span className={`order-status ${order.status.toLowerCase()}`}>{order.status}</span></td>
+                  <td>${order.totalAmount}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </section>

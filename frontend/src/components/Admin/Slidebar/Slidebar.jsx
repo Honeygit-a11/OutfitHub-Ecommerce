@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import productCartIcon from '../../Assets/Product_Cart.svg';
 import productListIcon from '../../Assets/Product_list_icon.svg';
 import dashboard from '../../../components/Assets/dashboard.svg.png'
+import products from '../../../components/Assets/products.png'
 
 const Slidebar = () => {
   return (
@@ -30,7 +31,7 @@ const Slidebar = () => {
       
  <Link to='/admin/order' style={{textDecoration:'none'}}>
       <div className="sidebar-item">
-        <img src=''alt="Product List" />
+        <img src={products}alt=""  style={{width:'29px', height:'29px'}}/>
         <p>Product Details</p>
       </div>
       </Link>

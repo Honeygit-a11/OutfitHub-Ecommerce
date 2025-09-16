@@ -68,11 +68,11 @@ const PaymentMethod = () => {
       try{
         const orderItems = getCartProductDetails();
 
-        const orderData ={
-          ProductName:orderItems,
-          userName:localStorage.getItem('userName' )|| 'Guest',
-          price:getFinalAmount()+deliveryCharge,
-          status:"Pending"
+        const orderData = {
+          products: orderItems,
+          userName: localStorage.getItem('userName') || 'Guest',
+          totalAmount: getFinalAmount() + deliveryCharge,
+          status: "Pending"
         };
         await axios.post('http://localhost:7000/api/orders',orderData);
 
@@ -157,7 +157,7 @@ const PaymentMethod = () => {
             Google Pay
           </label>
 
-          <label className={`${method === "cash on delivery" ? "active" : ""}`}>
+          <label className={`option ${method === "cash on delivery" ? "active" : ""}`}>
             <input
               type="radio"
               name="method"
@@ -230,7 +230,7 @@ const PaymentMethod = () => {
             </div>
           )}
           {method === "Cash on Delivery" && (
-            <div>
+            <div className="cod-box">
               <p>You chose <strong>Cash on Delivery</strong>. Please pay when the product is delivered.</p>
               <button type="button" onClick={() => setVerified(true)}>
                 Confirm COD Order
@@ -270,14 +270,21 @@ const PaymentMethod = () => {
         </div>
       </div>
 
-      <button
 
+      <button
         className="payment-btn"
-        disabled={!verified}
+        disabled={
+          !verified || (getFinalAmount() + deliveryCharge <= 150)
+        }
         onClick={handleCompletePayment}
       >
         Complete Payment
       </button>
+      {(getFinalAmount() + deliveryCharge <= 150) && (
+        <p style={{ color: 'red', marginTop: '8px' }}>
+          Minimum order amount is ₹151 to complete payment.
+        </p>
+      )}
 
       <p className="terms">
         By completing this purchase, you agree to our Terms of Service.

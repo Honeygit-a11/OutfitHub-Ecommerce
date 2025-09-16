@@ -179,3 +179,39 @@
 .Upi{
   width: 250px;
 }
+.payment-details div {
+  margin-top: 15px;
+}
+
+.payment-details p {
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.cod-box {
+  padding: 16px;
+  border: 2px dashed #5a94d3;
+  background: #f9fff9;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.cod-box strong {
+  color: #007bff;
+}
+
+.cod-box button {
+  margin-top: 12px;
+  padding: 10px 18px;
+  background: #5a94d3;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.cod-box button:hover {
+  background: #007bff;
+}

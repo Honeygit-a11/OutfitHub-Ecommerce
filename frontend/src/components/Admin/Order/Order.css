@@ -1,5 +1,10 @@
 .orders-container {
   padding: 20px;
+  width: 1098px;
+}
+.orders-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .orders-table {

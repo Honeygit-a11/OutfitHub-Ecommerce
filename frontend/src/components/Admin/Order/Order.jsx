@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
-// import axios from 'axios';
+import axios from 'axios';
 import '../../../components/Admin/order/Order.css';
 const Order = () => {
   const [orders,setOrders] = useState([]);
@@ -37,31 +37,39 @@ const Order = () => {
       <table className='orders-table'>
         <thead>
           <tr>
-            <th>Product</th>
+            <th>Product(s)</th>
             <th>User</th>
-            <th>Price</th>
+            <th>Total Amount</th>
             <th>Status</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
           {orders.map(order =>(
-           <tr key={order._id}>
-            <td>{order.productName}</td>
-            <td>{order.userName}</td>
-            <td>{order.price}</td>
-            <td>{order.status}</td>
-            <td>
-              <button className='accept-btn'
-              onClick={()=> handleAccept(order._id)}
-              disabled={order.status === 'Accepted'}>
-                Accept
-              </button>
-              <button className='delete-btn' onClick={()=> handleDelete(order._id)}>
-                Delete
-              </button>
-            </td>
-           </tr>
+            <tr key={order._id}>
+              <td>
+                {order.products && order.products.length > 0 ? (
+                  <ul style={{margin:0, paddingLeft: '1em'}}>
+                    {order.products.map((prod, idx) => (
+                      <li key={idx}>{prod.productName} x{prod.quantity}</li>
+                    ))}
+                  </ul>
+                ) : 'No products'}
+              </td>
+              <td>{order.userName}</td>
+              <td>{order.totalAmount}</td>
+              <td>{order.status}</td>
+              <td>
+                <button className='accept-btn'
+                  onClick={()=> handleAccept(order._id)}
+                  disabled={order.status === 'Accepted'}>
+                  Accept
+                </button>
+                <button className='delete-btn' onClick={()=> handleDelete(order._id)}>
+                  Delete
+                </button>
+              </td>
+            </tr>
           ))}
         </tbody>
       </table>
