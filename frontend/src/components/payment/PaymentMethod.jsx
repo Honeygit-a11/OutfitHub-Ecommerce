@@ -8,7 +8,7 @@ import axios from "axios";
 const PaymentMethod = () => {
   const [method, setMethod] = useState("card");
   const [verified, setVerified] = useState(false);
-  const { getFinalAmount, deliveryCharge, discount,getCartProductDetails} = useContext(ShopContext);
+  const { getFinalAmount, deliveryCharge, discount,getCartProductDetails, clearCart} = useContext(ShopContext);
   const navigate = useNavigate();
 
   // validation handlers
@@ -72,11 +72,14 @@ const PaymentMethod = () => {
           products: orderItems,
           userName: localStorage.getItem('userName') || 'Guest',
           totalAmount: getFinalAmount() + deliveryCharge,
-          status: "Pending"
+          status: "Pending",
+          paymentMethod: method
         };
         await axios.post('http://localhost:7000/api/orders',orderData);
 
       toast.success("Product ordered successful");
+
+      // clearCart();
 
       document.querySelectorAll('input').forEach((input) => (input.value = ''));
       document.querySelectorAll('select').forEach((select) => (select.value = 'select'));

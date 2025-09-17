@@ -73,6 +73,7 @@ const Dashboard = () => {
                 <th>Customer</th>
                 <th>Date</th>
                 <th>Status</th>
+                <th>PaymentMethod</th>
                 <th>Total</th>
               </tr>
             </thead>
@@ -83,6 +84,7 @@ const Dashboard = () => {
                   <td>{order.userName}</td>
                   <td>{new Date(order.createdAt).toLocaleDateString()}</td>
                   <td><span className={`order-status ${order.status.toLowerCase()}`}>{order.status}</span></td>
+                  <td>{order.paymentMethod || "Not Selected"}</td>
                   <td>${order.totalAmount}</td>
                 </tr>
               ))}
