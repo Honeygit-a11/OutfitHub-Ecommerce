@@ -1,0 +1,21 @@
+.zoom-container {
+  position: relative;
+  width: 350px;  
+  height: 450px; 
+  overflow: hidden;
+  border: 1px solid #ddd;
+  background-repeat: no-repeat;
+  background-size: 200%;
+  cursor: zoom-in;
+}
+
+.zoom-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.zoom-container:hover img {
+  opacity: 0; 
+}

@@ -1,0 +1,177 @@
+/* === Dashboard Layout === */
+.dashboard-container {
+  display: flex;
+  justify-content: center;
+  background: #f4f6f9;
+  min-height: 100vh;
+  padding: 20px;
+  width: 1089px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-main {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* === Cards Section === */
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.dashboard-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0px 3px 6px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 6px 12px rgba(0,0,0,0.12);
+}
+
+.card-title {
+  font-size: 14px;
+  color: #666;
+}
+
+.card-value {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 8px 0;
+  color: #222;
+}
+
+.card-change {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.card-change.positive {
+  color: #28a745;
+}
+
+.card-change.negative {
+  color: #dc3545;
+}
+
+/* === Charts Section === */
+.dashboard-charts {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.chart-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0px 3px 6px rgba(0,0,0,0.08);
+}
+
+.chart-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.chart-value {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.chart-placeholder {
+  height: 200px;
+  border: 2px dashed #bbb;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+}
+
+/* Product List */
+.product-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.product-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 14px;
+  color: #444;
+}
+
+.product-list li:last-child {
+  border-bottom: none;
+}
+
+/* === Orders Section === */
+.dashboard-orders {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0px 3px 6px rgba(0,0,0,0.08);
+}
+
+.orders-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.orders-table th,
+.orders-table td {
+  padding: 12px;
+  text-align: left;
+  font-size: 14px;
+  border-bottom: 1px solid #eee;
+}
+
+.orders-table th {
+  color: #555;
+  font-weight: 600;
+  background: #f9fafc;
+}
+
+.orders-table td {
+  color: #333;
+}
+
+/* Order Status */
+.order-status {
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.order-status.shipped {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.order-status.processing {
+  background: #cce5ff;
+  color: #004085;
+}
+
+.order-status.delivered {
+  background: #d4edda;
+  color: #155724;
+}

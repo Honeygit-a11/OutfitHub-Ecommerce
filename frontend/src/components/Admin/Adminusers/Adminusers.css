@@ -1,0 +1,90 @@
+/* Adminusers.css */
+
+.admin-users {
+  width: 900px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.admin-users h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.admin-users table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.admin-users thead {
+  background-color: #65afff;
+  color: white;
+}
+
+.admin-users th, 
+.admin-users td {
+  padding: 14px 18px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.admin-users tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+.admin-users tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.admin-users tbody tr:hover {
+  background-color: #e3f2fd;
+  cursor: pointer;
+}
+
+.admin-users th {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.admin-users td {
+  color: #333;
+}
+/* Pagination Styles */
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 8px 14px;
+  border: none;
+  background-color: #e0e0e0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.pagination button:hover {
+  background-color: #1976d2;
+  color: #fff;
+}
+
+.pagination button.active {
+  background-color: #1976d2;
+  color: white;
+  font-weight: bold;
+}
+
+.pagination button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}

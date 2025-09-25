@@ -1,0 +1,30 @@
+# Node modules
+node_modules/
+
+# Env files
+*.env
+frontend/.env
+backend/.env
+
+# Build output
+dist/
+build/
+.vite/
+
+# VSCode
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Backend uploads
+backend/uploads/
+
+# npm lockfiles
+package-lock.json
+pnpm-lock.yaml

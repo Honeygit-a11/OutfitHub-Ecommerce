@@ -1,0 +1,23 @@
+.main-container{
+  height: 100vh;
+  padding: 0px 50px;
+}
+.section-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.checkout-left{
+  flex: 2;
+}
+.checkout-right{
+   width: 300px;          /* or any fixed width */
+  margin: 0 auto;        /* centers the box horizontally */
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  background: #fff;
+  text-align: left;      /* keep inner text aligned */
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+}
