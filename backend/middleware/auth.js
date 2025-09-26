@@ -7,7 +7,7 @@ const fetchUser = async (req, res, next) => {
   }
 
   try {
-    const secret = process.env.JWT_SECRET || "secret_ecom";
+    const secret = process.env.JWT_SECRET ;
     const data = jwt.verify(token, secret);
     req.user = data.user;
     next();

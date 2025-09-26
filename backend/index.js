@@ -3,7 +3,8 @@ const cors = require("cors");
 const multer = require("multer");
 const path = require("path");
 const connectDB = require("./config/db");
-
+const dotenv  =require("dotenv")
+ dotenv.config()
 
 const authRoutes = require("./routes/AuthRoutes");
 const productRoutes = require("./routes/productsRoutes");
