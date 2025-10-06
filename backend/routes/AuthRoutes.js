@@ -31,7 +31,7 @@ router.post("/signup", async (req, res) => {
     await user.save();
 
     const data = { user: { id: user.id, isAdmin: user.isAdmin } };
-    const token = jwt.sign(data, "secret_ecom");
+    const token = jwt.sign(data, "JWT_SECRET");
 
     res.json({ success: true, token });
   } catch (err) {
@@ -47,7 +47,7 @@ router.post("/login", async (req, res) => {
       const passCompare = await bcrypt.compare(req.body.password, user.password);
       if (passCompare) {
         const data = { user: { id: user.id, isAdmin: user.isAdmin } };
-        const token = jwt.sign(data, "secret_ecom");
+        const token = jwt.sign(data, "JWT_SECRET");
         res.json({ success: true, token, user });
       } else {
         res.json({ success: false, errors: "Wrong Password" });

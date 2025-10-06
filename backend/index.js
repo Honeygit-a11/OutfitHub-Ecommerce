@@ -13,9 +13,10 @@ const orderRoutes = require("./routes/orderRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 const userRoutes = require("./routes/userRoutes");
 const settingsRoutes = require("./routes/settingsRoutes");
+const paymentRoute = require('./routes/PaymentRoute');
 
 const app = express();
-const port = process.env.PORT || 7000;
+const port = process.env.PORT;
 
 app.use(express.json());
 app.use(cors());
@@ -60,6 +61,7 @@ app.use("/api/orders", orderRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/users", userRoutes);
 app.use('/api/settings', settingsRoutes);
+app.use('/api', paymentRoute);
 
 // Root
 app.get("/", (req, res) => {

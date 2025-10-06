@@ -2,6 +2,10 @@ import React, { useContext, useState } from 'react'
 import '../Style/CheckoutForm.css'
 import { ShopContext } from '../context/ShopContext';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+
+const stripePromise = loadStripe(process.env.YOUR_PUBLIC_KEY);
 
 const CheckoutForm = ({ onSubmit }) => {
   const [address, setAddress] = useState([]);
@@ -20,15 +24,6 @@ const CheckoutForm = ({ onSubmit }) => {
     pincode: '',
   });
 const navigate = useNavigate();
-  
-  //PAGINATION
-  // const [currentPage,setCurrentPage] = useState(1);
-  // const addressPerPage = 1;
-
-  //
-  // const start = (currentPage -1)* addressPerPage;
-  // const currentAddress = address.slice(start + addressPerPage);
-  // const totalPages = Math.ceil(1,Math.ceil(address.length /addressPerPage ));
 
     const handleDeliveryChange = (method,charge) => {
     setSelectedDelivery(method);
@@ -204,7 +199,9 @@ const navigate = useNavigate();
           </div>
         )} */}
         
-        
+        <Elements stripe={stripePromise}>
+      <CheckoutForm />
+    </Elements>
       </div>
 
 
