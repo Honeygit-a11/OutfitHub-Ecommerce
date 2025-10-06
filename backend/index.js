@@ -18,6 +18,22 @@ const paymentRoute = require('./routes/PaymentRoute');
 const app = express();
 const port = process.env.PORT;
 
+
+// Server frontend after build
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const _dirname = path.dirname(_filename);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../frontend/dist", "index.html"));
+  });
+}
+
+
+
+
 app.use(express.json());
 app.use(cors());
 // Database connect
