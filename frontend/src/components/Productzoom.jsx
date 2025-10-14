@@ -1,5 +1,5 @@
 import { useState } from "react"
-import '../Style/ProductZoom.css'
+import '../Style/Productzoom.css'
 const ProductZoom = ({src,alt}) =>{
     const [backgroundPos,setBackgroundPos] = useState('center');
 
