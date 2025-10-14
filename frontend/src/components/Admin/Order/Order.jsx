@@ -4,7 +4,7 @@ import { useState } from 'react'
 import axios from 'axios';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import '../../../components/Admin/order/Order.css';
+import './Order.css';
 const Order = () => {
   const [orders,setOrders] = useState([]);
   const [page, setPage] = useState(1);
