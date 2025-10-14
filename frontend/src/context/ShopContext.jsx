@@ -126,7 +126,6 @@ const removeFromCart = (itemId) => {
   };
   //apply coupon
   const applyCoupon = (code) =>{
-      // call backend to apply coupon (marks as used)
       return fetch('http://localhost:7000/api/settings/apply-coupon', {
         method: 'POST',
         headers: {

@@ -2,10 +2,6 @@ import React, { useContext, useState } from 'react'
 import '../Style/CheckoutForm.css'
 import { ShopContext } from '../context/ShopContext';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-
-const stripePromise = loadStripe(process.env.YOUR_PUBLIC_KEY);
 
 const CheckoutForm = ({ onSubmit }) => {
   const [address, setAddress] = useState([]);
@@ -186,23 +182,7 @@ const navigate = useNavigate();
             </div>
           ))}
         </div>
-        {/* {address.length > addressPerPage && (
-          <div className='pagination'>
-            <button disabled={currentPage === 1}
-            onClick={()=> setCurrentPage((p) => Math.max(1,p-1))}>Prev</button>
-            <span>Page {currentPage} of {totalPages}</span>
-            <button
-            disabled = {currentPage === totalPages}
-            onClick={()=> setCurrentPage((p)=> Math.min(totalPages,p+1))}>
-              Next
-            </button>
-          </div>
-        )} */}
-        
-        <Elements stripe={stripePromise}>
-      <CheckoutForm />
-    </Elements>
-      </div>
+     </div>
 
 
     </>

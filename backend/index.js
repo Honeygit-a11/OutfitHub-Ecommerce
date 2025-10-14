@@ -3,8 +3,8 @@ const cors = require("cors");
 const multer = require("multer");
 const path = require("path");
 const connectDB = require("./config/db");
-const dotenv  =require("dotenv")
- dotenv.config()
+const dotenv = require("dotenv");
+dotenv.config();
 
 const authRoutes = require("./routes/AuthRoutes");
 const productRoutes = require("./routes/productsRoutes");
@@ -16,14 +16,10 @@ const settingsRoutes = require("./routes/settingsRoutes");
 const paymentRoute = require('./routes/PaymentRoute');
 
 const app = express();
-const port = process.env.PORT;
+// ensure a default port
+const port = process.env.PORT || 7000;
 
-
-// Server frontend after build
-import { fileURLToPath } from "url";
-const __filename = fileURLToPath(import.meta.url);
-const _dirname = path.dirname(_filename);
-
+// Server frontend after build (CommonJS: __dirname is available)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
   app.get("*", (req, res) => {
@@ -31,25 +27,22 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-
-
-
 app.use(express.json());
 app.use(cors());
 // Database connect
 connectDB();
 
 // Multer storage
-const storage = multer.diskStorage({
-  destination: path.join(__dirname, "uploads"),
+const storage = diskStorage({
+  destination: join(__dirname, "uploads"),
   filename: (req, file, cb) => {
-    return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
+    return cb(null, `${file.fieldname}_${Date.now()}${extname(file.originalname)}`);
   },
 });
 const upload = multer({ storage });
 
 // Static files
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use("/uploads", express.static(join(__dirname, "uploads")));
 
 // Upload endpoint
 app.post("/upload", upload.single("product"), (req, res) => {
@@ -77,7 +70,7 @@ app.use("/api/orders", orderRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/users", userRoutes);
 app.use('/api/settings', settingsRoutes);
-app.use('/api', paymentRoute);
+// app.use('/api', paymentRoute);
 
 // Root
 app.get("/", (req, res) => {
@@ -85,10 +78,6 @@ app.get("/", (req, res) => {
 });
 
 // Start server
-app.listen(port, (error) => {
-  if (!error) {
-    console.log("Server Running on Port " + port);
-  } else {
-    console.log("Error : " + error);
-  }
+app.listen(7000, () => {
+  console.log("Server running on port 7000");
 });
