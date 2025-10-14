@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
 
   build: {
-    // 🚀 Split vendor (node_modules) code into separate chunks
+    outDir: "dist", // ✅ Ensure the folder matches what Render will publish
     rollupOptions: {
       output: {
         manualChunks(id) {
@@ -19,24 +19,20 @@ export default defineConfig({
         },
       },
     },
-
-    // ⚙️ Increase warning limit (optional)
     chunkSizeWarningLimit: 1600,
-
-    // 🧹 Ensure assets and images are optimized
-    assetsInlineLimit: 4096, // 4kb inline images, larger ones as separate files
+    assetsInlineLimit: 4096,
     sourcemap: false,
-    minify: "terser", // better minification
+    minify: "terser",
     terserOptions: {
       compress: {
-        drop_console: true, // removes console.log for production
+        drop_console: true,
       },
     },
   },
 
   resolve: {
     alias: {
-      "@": "/src", // ✅ allows cleaner imports like '@/components/Button'
+      "@": "/src",
     },
   },
 });
