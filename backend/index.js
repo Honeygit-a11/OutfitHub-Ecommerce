@@ -14,6 +14,10 @@ const dashboardRoutes = require("./routes/dashboardRoutes");
 const userRoutes = require("./routes/userRoutes");
 const settingsRoutes = require("./routes/settingsRoutes");
 
+const { diskStorage } = multer;
+const { join, extname } = path;
+
+
 
 const app = express();
 // ensure a default port
@@ -55,7 +59,7 @@ app.post("/upload", upload.single("product"), (req, res) => {
 
   res.json({
     success: 1,
-    image_url: `http://localhost:${port}/uploads/${req.file.filename}`,
+    image_url: `${process.env.HOST_URL}/uploads/${req.file.filename}`,
   });
 });
 
