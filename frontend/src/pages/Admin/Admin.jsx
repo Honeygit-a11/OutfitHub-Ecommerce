@@ -5,7 +5,7 @@ import Addproduct from "../../components/Admin/Addproduct/Addproduct";
 import Listproduct from "../../components/Admin/Listproduct/Listproduct";
 import Adminlayout from '../../layout/Adminlayout';
 import Dashboard from '../../components/Admin/Dashboard/Dashboard';
-import Order from '../../components/Admin/order/Order';
+import Order from '../../components/Admin/Order/Order';
 import Adminusers from '../../components/Admin/Adminusers/Adminusers';
 import Gst from '../../components/Admin/GstPage/Gst';
 
