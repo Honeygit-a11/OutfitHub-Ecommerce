@@ -17,8 +17,6 @@ const settingsRoutes = require("./routes/settingsRoutes");
 const { diskStorage } = multer;
 const { join, extname } = path;
 
-
-
 const app = express();
 // ensure a default port
 const port = process.env.PORT || 7000;
@@ -26,7 +24,9 @@ const port = process.env.PORT || 7000;
 // Server frontend after build (CommonJS: __dirname is available)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
-  app.get("*", (req, res) => {
+  
+  // 💥 FIX: Changed app.get("*", ...) to app.get("/*splat", ...) for Express v5 compatibility.
+  app.get("/*splat", (req, res) => { 
     res.sendFile(path.resolve(__dirname, "../frontend/dist", "index.html"));
   });
 }
@@ -76,7 +76,7 @@ app.use("/api/users", userRoutes);
 app.use('/api/settings', settingsRoutes);
 
 
-// Root
+// Root (This route must come BEFORE the frontend catch-all if you want it to work)
 app.get("/", (req, res) => {
   res.send("Express App is running");
 });
