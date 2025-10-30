@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 // import { use } from "react";
 import { createContext, useState } from "react";
+import API_BASE from "../config/api";
 // import all_product from "../components/Assets/all_product";
 
 export const ShopContext = createContext(null);
@@ -18,12 +19,12 @@ const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
 
   useEffect(()=>{
-    fetch('http://localhost:7000/api/products/allproducts')
+  fetch(`${API_BASE}/api/products/allproducts`)
     .then((response) => response.json())
     .then((data)=>setAll_Products(data))
 
     // fetch GST from backend
-    fetch('http://localhost:7000/api/settings/gst')
+    fetch(`${API_BASE}/api/settings/gst`)
       .then((r) => r.json())
       .then((d) => {
         if (d && typeof d.gst === 'number') setGstRate(d.gst);
@@ -31,7 +32,7 @@ const ShopContextProvider = (props) => {
       .catch(() => {});
 
     if (localStorage.getItem('auth-token')) {
-      fetch('http://localhost:7000/api/cart/getcart',{
+      fetch(`${API_BASE}/api/cart/getcart`,{
         method:'POST',
         headers:{
           Accept:'application/form-data',
@@ -60,7 +61,7 @@ const ShopContextProvider = (props) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId]? prev[itemId]+1:1,
      }));
      if(localStorage.getItem('auth-token')){
-       fetch('http://localhost:7000/api/cart/addtocart',{
+       fetch(`${API_BASE}/api/cart/addtocart`,{
         method:"POST",
         headers:{
           Accept:"application/json",
@@ -83,7 +84,7 @@ const removeFromCart = (itemId) => {
     }
   });
   if(localStorage.getItem("auth-token")){
-     fetch('http://localhost:7000/api/cart/removefromcart',{
+     fetch(`${API_BASE}/api/cart/removefromcart`,{
       method:"POST",
       headers:{
         Accept:"application/json",
@@ -126,7 +127,7 @@ const removeFromCart = (itemId) => {
   };
   //apply coupon
   const applyCoupon = (code) =>{
-      return fetch('http://localhost:7000/api/settings/apply-coupon', {
+      return fetch(`${API_BASE}/api/settings/apply-coupon`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -199,7 +200,7 @@ const removeFromCart = (itemId) => {
     setCartItems(getDefaultCart());
     if (localStorage.getItem('auth-token')) {
       try {
-        await fetch('http://localhost:7000/api/cart/clearcart', {
+        await fetch(`${API_BASE}/api/cart/clearcart`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

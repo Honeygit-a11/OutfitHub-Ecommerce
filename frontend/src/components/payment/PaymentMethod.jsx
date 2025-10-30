@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import "./Payment.css";
 import { ShopContext } from "../../context/ShopContext";
+import API_BASE from '../../config/api';
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -85,7 +86,7 @@ const PaymentMethod = () => {
           status: "Pending",
           paymentMethod: method,
         };
-        await axios.post('http://localhost:7000/api/orders',orderData);
+  await axios.post(`${API_BASE}/api/orders`,orderData);
 
       toast.success("Product ordered successful");
 
