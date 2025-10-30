@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import upload_area from '../../Assets/upload_area.svg';
+import API_BASE from '../../../config/api';
 import '../../../components/Admin/Addproduct/Addproduct.css'
 
 const Addproduct = () => {
@@ -31,7 +32,7 @@ const Addproduct = () => {
     let formData = new FormData();
     formData.append('product', image);
 
-    let responseData = await fetch('http://localhost:7000/upload', {
+    let responseData = await fetch(`${API_BASE}/upload`, {
       method: 'POST',
       body: formData,
     }).then((resp) => resp.json());
@@ -39,7 +40,7 @@ const Addproduct = () => {
     if (responseData.success) {
       let product = { ...productDetails, image: responseData.image_url };
       // Add product
-      let addResp = await fetch('http://localhost:7000/api/products/addproduct', {
+      let addResp = await fetch(`${API_BASE}/api/products/addproduct`, {
         method: "POST",
         headers: {
           'Content-Type': "application/json",

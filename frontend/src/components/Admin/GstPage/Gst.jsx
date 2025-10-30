@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Gst.css"; // Import CSS file
+import API_BASE from '../../../config/api';
 
 const Gst = () => {
   const [gst, setGst] = useState("");
@@ -11,7 +12,7 @@ const Gst = () => {
 
   useEffect(() => {
     // fetch current GST from backend
-    fetch("http://localhost:7000/api/settings/gst")
+    fetch(`${API_BASE}/api/settings/gst`)
       .then((res) => res.json())
       .then((data) => {
         if (data && data.gst !== undefined) setSavedGst(data.gst);
@@ -26,7 +27,7 @@ const Gst = () => {
       return;
     }
     try {
-      const res = await fetch("http://localhost:7000/api/settings/gst", {
+      const res = await fetch(`${API_BASE}/api/settings/gst`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -54,7 +55,7 @@ const Gst = () => {
       return;
     }
     try {
-      const res = await fetch("http://localhost:7000/api/settings/coupon", {
+      const res = await fetch(`${API_BASE}/api/settings/coupon`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

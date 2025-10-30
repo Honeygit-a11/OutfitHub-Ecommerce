@@ -3,6 +3,7 @@ import axios from "axios";
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
 } from "recharts";
+import API_BASE from '../../../config/api';
 import "../../../components/Admin/Dashboard/Dashboard.css";
 
 const Dashboard = () => {
@@ -13,7 +14,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchDashboard = async () => {
       try {
-        const { data } = await axios.get("http://localhost:7000/api/dashboard");
+        const { data } = await axios.get(`${API_BASE}/api/dashboard`);
         setStats(data);
         setSalesData(data.salesChart);
         setRecentOrders(data.recentOrders);

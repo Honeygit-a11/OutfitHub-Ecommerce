@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import "../Style/Loginsignup.css";
 import { useState } from "react";
 import { AuthContext } from "../context/Authcontext";
+import API_BASE from "../config/api";
 
 const LoginSignup = () => {
   const { login: contextLogin } = useContext(AuthContext);
@@ -18,7 +19,7 @@ const LoginSignup = () => {
   const handleLogin = async () => {
     console.log("login function executed", formData);
     let responseData;
-    await fetch("http://localhost:7000/api/auth/login", {
+    await fetch(`${API_BASE}/api/auth/login`, {
       method: "POST",
       headers: {
         Accept: "application/from-data",
@@ -48,7 +49,7 @@ const LoginSignup = () => {
   const SignUp = async () => {
     console.log("Signup function executed", formData);
     let responseData;
-    await fetch("http://localhost:7000/api/auth/signup", {
+    await fetch(`${API_BASE}/api/auth/signup`, {
       method: "POST",
       headers: {
         Accept: "application/from-data",

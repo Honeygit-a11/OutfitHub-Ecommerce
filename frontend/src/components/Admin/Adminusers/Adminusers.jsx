@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API_BASE from '../../../config/api';
 import '../../../components/Admin/Adminusers/Adminusers.css'
 
 const Adminusers = () => {
@@ -10,7 +11,7 @@ const Adminusers = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get('http://localhost:7000/api/users');
+        const res = await axios.get(`${API_BASE}/api/users`);
          console.log("API Response:", res.data);
         setUsers(res.data);
       } catch (error) {

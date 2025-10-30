@@ -4,6 +4,7 @@ import { useState } from 'react'
 import axios from 'axios';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
+import API_BASE from '../../../config/api';
 import './Order.css';
 const Order = () => {
   const [orders,setOrders] = useState([]);
@@ -17,7 +18,7 @@ const Order = () => {
 
   const fetchOrders = async ()=>{
     try{
-      const res = await axios.get('http://localhost:7000/api/orders');
+      const res = await axios.get(`${API_BASE}/api/orders`);
       setOrders(res.data);
     }catch(err){
       console.error(err);
@@ -25,12 +26,12 @@ const Order = () => {
   };
   //accept 
   const handleAccept = async (id) =>{
-    await axios.put(`http://localhost:7000/api/orders/${id}`,{status:"Accepted"});
+    await axios.put(`${API_BASE}/api/orders/${id}`,{status:"Accepted"});
     fetchOrders();
   };
   //delete order
   const handleDelete = async(id) =>{
-    await axios.delete(`http://localhost:7000/api/orders/${id}`);
+    await axios.delete(`${API_BASE}/api/orders/${id}`);
     fetchOrders();
   };
 
