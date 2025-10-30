@@ -32,7 +32,10 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: ["http://localhost:5173", "https://outfithub-ecommerce-i7sj.onrender.com"],
+  credentials: true
+}));
 // Database connect
 connectDB();
 
